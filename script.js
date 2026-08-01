@@ -23,4 +23,3 @@ if (!reducedMotion) {
     document.documentElement.style.setProperty('--mouse-y', `${event.clientY}px`);
   }, { passive: true });
 }
-
