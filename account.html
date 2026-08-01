@@ -1,0 +1,29 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1"><meta name="theme-color" content="#090807">
+  <meta name="description" content="Bazoo Studios player accounts, profiles, points, ranks, and leaderboards."><title>Player Hub — Bazoo Studios LLC</title>
+  <link rel="icon" href="assets/bazoo-controller.png?v=2" type="image/png"><link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Mono:wght@400;500&family=Manrope:wght@400;500;600;700;800&display=swap" rel="stylesheet"><link rel="stylesheet" href="styles.css">
+</head>
+<body class="account-page">
+  <div class="noise" aria-hidden="true"></div><div class="cursor-glow" aria-hidden="true"></div>
+  <header class="site-header"><a class="brand" href="index.html"><img src="assets/bazoo-controller.png?v=2" alt="" width="48" height="48"><span>BAZOO <em>STUDIOS</em></span></a><nav><a href="index.html">Home</a><a href="portfolio.html">Portfolio</a><a href="index.html#connect">Connect</a><a href="privacy.html">Privacy</a></nav><span class="status"><i></i> Player network</span></header>
+  <main class="account-shell">
+    <section class="account-hero"><div><p class="kicker">Bazoo player network // beta</p><h1>Enter the<br><span>player hub.</span></h1><p>One profile for Bazoo games, community points, achievements, social badges, and global leaderboards.</p></div>
+      <div class="auth-panel" id="auth-panel" aria-live="polite"><img src="assets/bazoo-controller.png?v=2" alt="Bazoo Studios controller logo"><p class="kicker">Identity link</p><h2>Sign in to begin</h2><p id="auth-copy">Use Google to create your secure Bazoo player identity.</p><button class="button button-primary google-button" id="google-signin" type="button"><span class="google-mark">G</span> Continue with Google <span>&#8599;</span></button><p class="auth-fineprint">By continuing, you agree to our <a href="privacy.html">Privacy Policy</a>.</p></div>
+    </section>
+    <section class="player-dashboard section" id="player-dashboard" hidden>
+      <div class="section-number">01 / PLAYER PROFILE</div><div class="player-grid">
+        <article class="player-card"><div class="player-avatar-wrap"><img id="player-avatar" src="assets/bazoo-controller.png?v=2" alt="Player avatar"></div><p class="kicker">Authenticated player</p><h2 id="player-name">Player</h2><p id="player-email" class="player-email"></p><div class="rank-lockup"><span id="player-rank">NEW PLAYER</span><strong id="player-points">0</strong><small>total points</small></div><button class="button button-ghost" id="signout" type="button">Sign out</button></article>
+        <form class="profile-form" id="profile-form"><p class="kicker">Customize your identity</p><label>Display name<input id="display-name" maxlength="60" autocomplete="name"></label><label>Username<input id="username" maxlength="24" pattern="[A-Za-z0-9_]+" placeholder="letters_numbers_only"></label><label>Player bio<textarea id="bio" maxlength="240" rows="4" placeholder="Tell the Bazoo community about yourself."></textarea></label><button class="button button-primary" type="submit">Save profile <span>&#8599;</span></button><p class="form-status" id="profile-status" role="status"></p></form>
+      </div>
+      <div class="account-subgrid"><article class="hub-card"><div class="hub-card-head"><div><p class="kicker">Connected accounts</p><h3>Social badges</h3></div><span>COMING ONLINE</span></div><div class="connection-list" id="connection-list"><div><b>YouTube</b><span>Not connected</span></div><div><b>TikTok</b><span>Not connected</span></div><div><b>Facebook</b><span>Not connected</span></div></div></article>
+        <article class="hub-card"><div class="hub-card-head"><div><p class="kicker">Recent activity</p><h3>Points log</h3></div><span>SECURE LEDGER</span></div><div class="points-list" id="points-list"><p>No points earned yet. Your first mission is coming soon.</p></div></article></div>
+    </section>
+    <section class="leaderboard-section section"><div class="section-number">02 / GLOBAL RANKING</div><div class="leaderboard-heading"><div><p class="kicker">Community standings</p><h2>Top<br><em>players.</em></h2></div><p>Rankings are built from verified Bazoo activity. Game integrations will submit scores securely so the board stays competitive and fair.</p></div><div class="leaderboard-table" id="leaderboard" aria-live="polite"><p>Waiting for the first players to join.</p></div></section>
+  </main>
+  <footer><a class="footer-brand" href="index.html"><img src="assets/bazoo-controller.png?v=2" alt="" width="34" height="34"> BAZOO STUDIOS LLC</a><p>© <span id="year"></span> Bazoo Studios LLC.</p><div><a href="index.html">Home</a><a href="privacy.html">Privacy policy</a></div></footer>
+  <script src="script.js"></script><script type="module" src="account.js"></script>
+</body></html>
+
