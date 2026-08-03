@@ -2,6 +2,29 @@ const reducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matc
 
 document.getElementById('year').textContent = new Date().getFullYear();
 
+const siteHeader = document.querySelector('.site-header');
+const navigation = siteHeader?.querySelector('nav');
+const navigationToggle = siteHeader?.querySelector('.nav-toggle');
+if (siteHeader && navigation && navigationToggle) {
+  navigationToggle.addEventListener('click', () => {
+    const isOpen = siteHeader.classList.toggle('is-open');
+    navigationToggle.setAttribute('aria-expanded', String(isOpen));
+  });
+  navigation.addEventListener('click', (event) => {
+    if (event.target.closest('a')) {
+      siteHeader.classList.remove('is-open');
+      navigationToggle.setAttribute('aria-expanded', 'false');
+    }
+  });
+  document.addEventListener('keydown', (event) => {
+    if (event.key === 'Escape') {
+      siteHeader.classList.remove('is-open');
+      navigationToggle.setAttribute('aria-expanded', 'false');
+      navigationToggle.focus();
+    }
+  });
+}
+
 const reveals = document.querySelectorAll('.reveal');
 if ('IntersectionObserver' in window && !reducedMotion) {
   const observer = new IntersectionObserver((entries) => {
@@ -76,7 +99,7 @@ if (matrixCanvas && !reducedMotion) {
 
   const drawMatrix = (time) => {
     requestAnimationFrame(drawMatrix);
-    if (time - lastFrame < 38) return;
+    if (time - lastFrame < (width < 650 ? 58 : 38)) return;
     lastFrame = time;
     context.clearRect(0, 0, width, height);
     context.font = `500 ${fontSize}px DM Mono, monospace`;
