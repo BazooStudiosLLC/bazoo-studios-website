@@ -46,3 +46,68 @@ if (!reducedMotion) {
     document.documentElement.style.setProperty('--mouse-y', `${event.clientY}px`);
   }, { passive: true });
 }
+
+document.querySelectorAll('[data-gallery]').forEach((gallery) => {
+  const slides = [...gallery.querySelectorAll('[data-gallery-slide]')];
+  const thumbs = [...gallery.querySelectorAll('[data-gallery-thumb]')];
+  const prev = gallery.querySelector('[data-gallery-prev]');
+  const next = gallery.querySelector('[data-gallery-next]');
+  const counter = gallery.querySelector('[data-gallery-count]');
+  if (!slides.length) return;
+
+  let current = 0;
+  let timer = null;
+
+  const showSlide = (index) => {
+    current = (index + slides.length) % slides.length;
+    slides.forEach((slide, slideIndex) => {
+      slide.classList.toggle('is-active', slideIndex === current);
+    });
+    thumbs.forEach((thumb, thumbIndex) => {
+      thumb.classList.toggle('is-active', thumbIndex === current);
+      thumb.setAttribute('aria-current', thumbIndex === current ? 'true' : 'false');
+    });
+    if (counter) {
+      counter.textContent = String(current + 1).padStart(2, '0');
+    }
+  };
+
+  const restartTimer = () => {
+    if (reducedMotion || slides.length < 2) return;
+    if (timer) window.clearInterval(timer);
+    timer = window.setInterval(() => showSlide(current + 1), 6500);
+  };
+
+  if (prev) {
+    prev.addEventListener('click', () => {
+      showSlide(current - 1);
+      restartTimer();
+    });
+  }
+
+  if (next) {
+    next.addEventListener('click', () => {
+      showSlide(current + 1);
+      restartTimer();
+    });
+  }
+
+  thumbs.forEach((thumb, thumbIndex) => {
+    thumb.addEventListener('click', () => {
+      showSlide(thumbIndex);
+      restartTimer();
+    });
+  });
+
+  gallery.addEventListener('mouseenter', () => {
+    if (timer) window.clearInterval(timer);
+  });
+  gallery.addEventListener('mouseleave', restartTimer);
+  gallery.addEventListener('focusin', () => {
+    if (timer) window.clearInterval(timer);
+  });
+  gallery.addEventListener('focusout', restartTimer);
+
+  showSlide(0);
+  restartTimer();
+});
