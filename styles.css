@@ -261,7 +261,11 @@ footer a:hover { color: var(--red-bright); }
 .text-link { color: var(--red-bright); border-bottom: 1px solid rgba(239,65,69,.4); }
 
 /* Lost Seal */
-.lostseal-page { background: var(--ink); }
+.lostseal-page {
+  background:
+    radial-gradient(circle at 8% 36%, rgba(239,65,69,.08), transparent 28%),
+    var(--ink);
+}
 .lostseal-hero {
   min-height: calc(100svh - 82px);
   padding: clamp(70px, 9vw, 135px) clamp(22px, 7vw, 110px);
@@ -295,7 +299,7 @@ footer a:hover { color: var(--red-bright); }
     radial-gradient(circle at 50% 30%, rgba(243,243,223,.14), transparent 18%),
     radial-gradient(circle at 70% 70%, rgba(200,46,49,.28), transparent 28%),
     linear-gradient(145deg, #201c19, #362f2b 55%, #151210);
-  box-shadow: 24px 24px 0 rgba(243,243,223,.03);
+  box-shadow: 24px 24px 0 rgba(243,243,223,.03), inset 0 0 80px rgba(10,9,8,.22);
 }
 .lostseal-art::before {
   content: "";
@@ -320,7 +324,8 @@ footer a:hover { color: var(--red-bright); }
   max-width: 340px;
   padding: 22px;
   border: 1px solid rgba(243,243,223,.18);
-  background: rgba(41,38,36,.72);
+  background: rgba(25,22,20,.82);
+  box-shadow: 10px 10px 0 rgba(10,9,8,.22);
   backdrop-filter: blur(8px);
 }
 .lostseal-art-inner span {
@@ -367,7 +372,9 @@ footer a:hover { color: var(--red-bright); }
   display: flex;
   flex-direction: column;
   justify-content: space-between;
+  transition: background .25s ease, transform .25s ease;
 }
+.lostseal-card:hover { background: rgba(41,38,36,.92); transform: translateY(-4px); }
 .lostseal-card span {
   color: var(--red-bright);
   font: 9px var(--mono);
@@ -404,13 +411,17 @@ footer a:hover { color: var(--red-bright); }
   border: 1px solid var(--line);
   background: rgba(21,19,17,.72);
   overflow: hidden;
+  transition: border-color .25s ease, transform .25s ease, background .25s ease;
 }
+.lostseal-snapshot:hover { border-color: rgba(239,65,69,.65); background: rgba(41,38,36,.88); transform: translateY(-5px); }
 .lostseal-snapshot img {
   display: block;
   width: 100%;
   height: 230px;
   object-fit: cover;
+  transition: transform .45s ease, filter .45s ease;
 }
+.lostseal-snapshot:hover img { transform: scale(1.035); filter: saturate(1.12); }
 .lostseal-snapshot div {
   padding: 15px 16px 18px;
   display: grid;
