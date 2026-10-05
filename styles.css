@@ -303,6 +303,7 @@ footer a:hover { color: var(--red-bright); }
   inset: 10%;
   border: 1px solid rgba(243,243,223,.08);
   border-radius: 50%;
+  z-index: 1;
 }
 .lostseal-art::after {
   content: "";
@@ -311,10 +312,11 @@ footer a:hover { color: var(--red-bright); }
   border: 1px dashed rgba(239,65,69,.26);
   border-radius: 50%;
   animation: spin 24s linear infinite;
+  z-index: 1;
 }
 .lostseal-art-inner {
   position: relative;
-  z-index: 1;
+  z-index: 2;
   max-width: 340px;
   padding: 22px;
   border: 1px solid rgba(243,243,223,.18);
@@ -343,6 +345,7 @@ footer a:hover { color: var(--red-bright); }
 .lostseal-hero-image {
   position: absolute;
   inset: 0;
+  z-index: 0;
   width: 100%;
   height: 100%;
   object-fit: cover;
